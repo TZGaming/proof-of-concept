@@ -84,13 +84,13 @@ main {
     .photo-sidebar {
         display: flex;
         flex-direction: column;
-        width: 30%;
+        width: 22%;
         height: 100%;
         gap: 8px;
 
         .sidebar-temp-photo {
             background-color: var(--color-quiet-secondary);
-            height: 25%;
+            height: 18%;
             width: 100%;
         }
     }
