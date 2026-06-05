@@ -78,7 +78,7 @@ main {
     .temp-photo {
         background-color: var(--color-quiet-secondary);
         height: 80%;
-        width: 100%;
+        width: 300px;
     }
 
     .photo-sidebar {
@@ -91,7 +91,15 @@ main {
         .sidebar-temp-photo {
             background-color: var(--color-quiet-secondary);
             height: 18%;
-            width: 100%;
+            width: 57px;
         }
+    }
+}
+
+h1 {
+    font-size: 26px;
+
+    &.brand {
+        font-size: 22px;
     }
 }
