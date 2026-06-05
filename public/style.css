@@ -48,6 +48,7 @@ main {
     border-radius: 2rem;
     background: var(--color-quiet-secondary );
     height: 3rem;
+    margin-bottom: 16px;
     outline: 2px solid transparent;
     transition: outline 0.1s ease-in-out;
 
@@ -70,9 +71,6 @@ main {
 
 .photo-grid {
     display: flex;
-    flex-direction: row;
-    height: 20rem;
-    margin-top: 16px;
     gap: 8px;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
@@ -81,7 +79,7 @@ main {
         scroll-snap-align: center;
     }
 
-    .photo-sidebar {
+    /* .photo-sidebar {
         display: flex;
         flex-direction: column;
         width: 22%;
@@ -93,7 +91,7 @@ main {
             height: 18%;
             width: 57px;
         }
-    }
+    } */
 }
 
 h1 {
