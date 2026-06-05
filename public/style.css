@@ -74,11 +74,11 @@ main {
     height: 20rem;
     margin-top: 16px;
     gap: 8px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
     
-    .temp-photo {
-        background-color: var(--color-quiet-secondary);
-        height: 80%;
-        width: 300px;
+    .photo-preview {
+        scroll-snap-align: center;
     }
 
     .photo-sidebar {
