@@ -67,3 +67,31 @@ main {
         }
     }
 }
+
+.photo-grid {
+    display: flex;
+    flex-direction: row;
+    height: 20rem;
+    margin-top: 16px;
+    gap: 8px;
+    
+    .temp-photo {
+        background-color: var(--color-quiet-secondary);
+        height: 80%;
+        width: 100%;
+    }
+
+    .photo-sidebar {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        height: 100%;
+        gap: 8px;
+
+        .sidebar-temp-photo {
+            background-color: var(--color-quiet-secondary);
+            height: 25%;
+            width: 100%;
+        }
+    }
+}
