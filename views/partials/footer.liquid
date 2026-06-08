@@ -1,2 +1,3 @@
 </body>
+<footer></footer>
 </html>

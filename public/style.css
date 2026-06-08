@@ -118,6 +118,7 @@ p {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-top: 30px;
 }
 
 /* Custom selector van Codepen (https://codepen.io/una/pen/eYojgZw) */
@@ -162,4 +163,48 @@ select {
 
 label {
     width: fit-content;
+}
+
+.amount-button-container {
+    display: flex;
+    align-items: center;
+    border-radius: 40px;
+    outline: 1px var(--color-quiet) solid;
+    width: fit-content;
+    margin-top: 30px;
+    padding: 4px;
+    overflow: hidden;
+
+    button,
+    input {
+        padding: 8px;
+        border: none;
+        background: transparent;
+    }
+
+    input {
+        width: 45px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    button {
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: background-color .15s;
+
+        &:hover {
+            background-color: rgb(240, 240, 240);
+        }
+    }
+}
+
+footer {
+    margin-top: 30px;
 }
