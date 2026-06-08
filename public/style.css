@@ -101,3 +101,65 @@ h1 {
         font-size: 22px;
     }
 }
+
+p {
+    &.prod-id {
+        font-size: 12px;
+        color: var(--color-quiet);
+        margin-bottom: 20px;
+    }
+
+    &.prod-desc {
+        margin-bottom: 0px;
+    }
+}
+
+.size-selector-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Custom selector van Codepen (https://codepen.io/una/pen/eYojgZw) */
+select,
+::picker(select) {
+  appearance: base-select;
+  border: 2px rgb(240, 240, 240) solid;
+}
+
+option::checkmark {
+  display: none;
+}
+
+option,
+selectedcontent {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 1rem;
+  font-size: 1rem;
+  align-items: center;
+  place-items: initial;
+  padding: 1rem;
+}
+
+[hidden] {
+  display: none;
+}
+
+select {
+  background: var(--color-quiet-secondary);
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  transition: background-color .15s;
+
+  &:hover {
+    background-color: rgb(230, 230, 230);
+  }
+}
+
+label {
+    width: fit-content;
+}
