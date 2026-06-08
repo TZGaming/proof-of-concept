@@ -57,8 +57,12 @@
 
 <div class="amount-button-container">
     <button type="button">-</button>
-    <input id="amount-input" aria-valuenow="1" aria-valuemax="99" aria-valuemin="1" type="text" value="1">
+    <input id="amount-input" role="spinbutton" aria-valuenow="1" aria-valuemax="99" aria-valuemin="1" type="text" value="1">
     <button type="button">+</button>
 </div>
+
+<h1 class="price">€44,99</h1>
+
+<button class="basket-submit-button" type="button">Add to basket</button>
 
 {% render 'partials/footer.liquid' %}

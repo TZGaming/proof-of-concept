@@ -100,6 +100,13 @@ h1 {
     &.brand {
         font-size: 22px;
     }
+
+    &.price {
+        background-color: #FFCD4E;
+        width: fit-content;
+        padding: 4px;
+        margin-top: 30px;
+    }
 }
 
 p {
@@ -132,8 +139,7 @@ option::checkmark {
   display: none;
 }
 
-option,
-selectedcontent {
+option {
   display: grid;
   grid-template-columns: 1.5rem 1fr;
   gap: 1rem;
@@ -202,6 +208,24 @@ label {
         &:hover {
             background-color: rgb(240, 240, 240);
         }
+    }
+}
+
+.basket-submit-button {
+    background-color: var(--color-accent);
+    border: none;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    min-height: 4rem;
+    font-size: 14px;
+    font-family: "Decathlon";
+    margin-top: 16px;
+    cursor: pointer;
+    transition: background-color .3s;
+
+    &:hover {
+        background-color: var(--color-accent-hover);
     }
 }
 
