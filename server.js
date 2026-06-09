@@ -21,9 +21,26 @@ app.engine("liquid", engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set("views", "./views");
 
-app.get("/", async function (request, response) {
+const baseURL = 'https://fdnd-agency.directus.app/items'
+const productEndpoint = `${baseURL}/decathlon_products`
+const reviewEndpoint = `${baseURL}/decathlon_reviews`
 
- response.render("index.liquid", { });
+const fetchData = async (url) => {
+  const fetchResponse = await fetch(url);
+  const json = await fetchResponse.json();
+  return json.data;
+};
+
+app.get("/", async function (request, response) {
+  const [products, reviews] = await Promise.all([
+    fetchData(productEndpoint),
+    fetchData(reviewEndpoint),
+  ]);
+
+  response.render("index.liquid", {
+    product: products[0],
+    review: reviews[0],
+  });
 });
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
