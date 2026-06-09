@@ -13,8 +13,8 @@
   {% endcomment %}
 </div>
 
-<h1 class="brand">KIPSTA</h1>
-<h1>Men's/Women's Low Basketball Shoes Fast 500 - White</h1>
+<h1 class="brand">{{ product.brand }}</h1>
+<h1>{{ product.title }}</h1>
 
 <div class="review-stars">
   <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,23 +37,25 @@
     <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
   </svg>
 
-  <span>5</span>
+  <span>{{ review.rating }}</span>
 </div>
 
 <p class="prod-desc">
-  These lightweight basketball shoes offer excellent traction and support for sharp directional changes on the court.
-  Drive straight to the rim!
+  {{ product.summary }}
 </p>
 
-<p class="prod-id">ID 8974697</p>
+<p class="prod-id">ID {{ product.id }}</p>
 
 <div class="size-selector-container">
   <label for="size-select">Size</label>
 
   <select id="size-select" class="size-select">
     <option value="" hidden>Select</option>
-    <option value="size1">UK 4 - EU 37</option>
-    <option value="size1">UK 5 - EU 38</option>
+    {% for sizeItem in product.sizes %}
+      <option value="{{ sizeItem.size }}" {% unless sizeItem.available %}disabled{% endunless %}>
+        EU {{ sizeItem.size }}{% unless sizeItem.available %} - not available{% endunless %}
+      </option>
+    {% endfor %}
   </select>
 </div>
 
@@ -63,7 +65,7 @@
     <button type="button">+</button>
 </div>
 
-<p class="price">€44,99</p>
+<p class="price">€{{ product.price }}</p>
 
 <button class="basket-submit-button" type="button">Add to basket</button>
 
