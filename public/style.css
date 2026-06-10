@@ -222,12 +222,19 @@ label {
     font-size: 14px;
     font-family: "Decathlon";
     margin-top: 16px;
+    margin-bottom: 16px;
     cursor: pointer;
     transition: background-color .3s;
 
     &:hover {
         background-color: var(--color-accent-hover);
     }
+}
+
+.final-rating {
+    font-size: 36px;
+    font-weight: bold;
+    margin-right: 3px;
 }
 
 footer {

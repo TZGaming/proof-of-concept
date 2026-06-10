@@ -1,66 +1,77 @@
 {% render 'partials/head.liquid' %}
 
-<div class="photo-grid">
-  {% assign reversedImages = product.images | reverse %}
-  {% for image in reversedImages %}
-    <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=500&height=500" alt="" width="300" height="300" class="photo-preview">
-  {% endfor %}
-</div>
-
-<h1 class="brand">{{ product.brand }}</h1>
-<h1>{{ product.title }}</h1>
-
-<div class="review-stars">
-  <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
-  </svg>
-
-  <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
-  </svg>
-
-  <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
-  </svg>
-
-  <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
-  </svg>
-
-  <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
-  </svg>
-
-  <span>{{ review.rating }}</span>
-</div>
-
-<p class="prod-desc">
-  {{ product.summary }}
-</p>
-
-<p class="prod-id">ID {{ product.id }}</p>
-
-<div class="size-selector-container">
-  <label for="size-select">Size</label>
-
-  <select id="size-select" class="size-select">
-    <option value="" hidden>Select</option>
-    {% for sizeItem in product.sizes %}
-      <option value="{{ sizeItem.size }}" {% unless sizeItem.available %}disabled{% endunless %}>
-        EU {{ sizeItem.size }}{% unless sizeItem.available %} - not available{% endunless %}
-      </option>
+<section class="product-info">
+  <div class="photo-grid">
+    {% assign reversedImages = product.images | reverse %}
+    {% for image in reversedImages %}
+      <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=500&height=500" alt="" width="300" height="300" class="photo-preview">
     {% endfor %}
-  </select>
-</div>
+  </div>
 
-<div class="amount-button-container">
-    <button type="button">-</button>
-    <input id="amount-input" role="spinbutton" aria-valuenow="1" aria-valuemax="99" aria-valuemin="1" type="text" value="1">
-    <button type="button">+</button>
-</div>
+  <h1 class="brand">{{ product.brand }}</h1>
+  <h1>{{ product.title }}</h1>
+
+  <div class="review-stars">
+    <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
+    </svg>
+
+    <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
+    </svg>
+
+    <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
+    </svg>
+
+    <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
+    </svg>
+
+    <svg width="16" height="16" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
+    </svg>
+
+    <span>{{ review.rating }}</span>
+  </div>
+
+  <p class="prod-desc">
+    {{ product.summary }}
+  </p>
+
+  <p class="prod-id">ID {{ product.id }}</p>
+</section>
+
+<section class="product-user-preferences">
+  <div class="size-selector-container">
+    <label for="size-select">Size</label>
+
+    <select id="size-select" class="size-select">
+      <option value="" hidden>Select</option>
+      {% for sizeItem in product.sizes %}
+        <option value="{{ sizeItem.size }}" {% if not sizeItem.available %}disabled{% endif %}>
+          EU {{ sizeItem.size }}{% if not sizeItem.available %} - not available{% endif %}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="amount-button-container">
+      <button type="button">-</button>
+      <input id="amount-input" role="spinbutton" aria-valuenow="1" aria-valuemax="99" aria-valuemin="1" type="text" value="1">
+      <button type="button">+</button>
+  </div>
+</section>
 
 <p class="price">€{{ product.price }}</p>
 
 <button class="basket-submit-button" type="button">Add to basket</button>
+
+<section class="reviews">
+  <h1>Reviews</h1>
+
+  <span class="final-rating">5.0</span>
+  <span>out of 5</span>
+</section>
 
 {% render 'partials/footer.liquid' %}
