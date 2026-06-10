@@ -78,20 +78,6 @@ main {
     .photo-preview {
         scroll-snap-align: center;
     }
-
-    /* .photo-sidebar {
-        display: flex;
-        flex-direction: column;
-        width: 22%;
-        height: 100%;
-        gap: 8px;
-
-        .sidebar-temp-photo {
-            background-color: var(--color-quiet-secondary);
-            height: 18%;
-            width: 57px;
-        }
-    } */
 }
 
 h1 {
@@ -140,8 +126,14 @@ p {
 /* Custom selector van Codepen (https://codepen.io/una/pen/eYojgZw) */
 select,
 ::picker(select) {
-  appearance: base-select;
   border: 2px rgb(240, 240, 240) solid;
+}
+
+@supports (appearance: base-select) {
+    select,
+    ::picker(select) {
+        appearance: base-select;
+    }  
 }
 
 option::checkmark {

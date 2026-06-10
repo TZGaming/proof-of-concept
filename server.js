@@ -22,7 +22,7 @@ app.engine("liquid", engine.express());
 app.set("views", "./views");
 
 const baseURL = 'https://fdnd-agency.directus.app/items'
-const productEndpoint = `${baseURL}/decathlon_products`
+const productEndpoint = `${baseURL}/decathlon_products?fields=*,images.*`
 const reviewEndpoint = `${baseURL}/decathlon_reviews`
 
 const fetchData = async (url) => {

@@ -1,16 +1,10 @@
 {% render 'partials/head.liquid' %}
 
 <div class="photo-grid">
-  <img src="assets/img/schoen1.avif" alt="schoen 1" width="300" height="300" class="photo-preview">
-  <img src="assets/img/schoen2.avif" alt="schoen 2" width="300" height="300" class="photo-preview">
-  {% comment %}
-    <div class="photo-sidebar">
-        <div class="sidebar-temp-photo"></div>
-        <div class="sidebar-temp-photo"></div>
-        <div class="sidebar-temp-photo"></div>
-        <div class="sidebar-temp-photo"></div>
-    </div>
-  {% endcomment %}
+  {% assign reversedImages = product.images | reverse %}
+  {% for image in reversedImages %}
+    <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=500&height=500" alt="" width="300" height="300" class="photo-preview">
+  {% endfor %}
 </div>
 
 <h1 class="brand">{{ product.brand }}</h1>
