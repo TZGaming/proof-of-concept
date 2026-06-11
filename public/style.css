@@ -242,6 +242,33 @@ label {
     border-bottom: 2px solid var(--color-quiet-secondary);
     padding-top: 16px;
 
+    .review-attributes {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: center; 
+        }
+
+        .score {
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .criteria {
+            color: var(--color-quiet);
+        }
+    }
+
     .review-title {
         font-size: 22px;
         font-weight: bold;

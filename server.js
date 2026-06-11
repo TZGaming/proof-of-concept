@@ -23,7 +23,7 @@ app.set("views", "./views");
 
 const baseURL = 'https://fdnd-agency.directus.app/items'
 const productEndpoint = `${baseURL}/decathlon_products?fields=*,images.*`
-const reviewEndpoint = `${baseURL}/decathlon_reviews`
+const reviewEndpoint = `${baseURL}/decathlon_reviews?fields=*,attributes.*`
 
 const fetchData = async (url) => {
   const fetchResponse = await fetch(url);
