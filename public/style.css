@@ -238,6 +238,16 @@ label {
     margin-right: 3px;
 }
 
+.review-item {
+    border-bottom: 2px solid var(--color-quiet-secondary);
+    padding-top: 16px;
+
+    .review-title {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+
 footer {
     margin-top: 30px;
 }

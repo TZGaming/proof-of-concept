@@ -31,15 +31,26 @@ const fetchData = async (url) => {
   return json.data;
 };
 
+const getRatingValue = (review) => {
+  const rawRating = review?.rating ?? review?.review_rating ?? 0;
+  const numberRating = typeof rawRating === "number" ? rawRating : Number(rawRating);
+  return Number.isNaN(numberRating) ? 0 : Math.min(5, Math.max(0, Math.round(numberRating)));
+};
+
 app.get("/", async function (request, response) {
   const [products, reviews] = await Promise.all([
     fetchData(productEndpoint),
     fetchData(reviewEndpoint),
   ]);
 
+  const reviewsWithRatings = reviews.map((review) => ({
+    ...review,
+    ratingValue: getRatingValue(review),
+  }));
+
   response.render("index.liquid", {
     product: products[0],
-    review: reviews[0],
+    reviews: reviewsWithRatings,
   });
 });
 
