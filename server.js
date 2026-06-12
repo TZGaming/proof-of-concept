@@ -15,6 +15,29 @@ app.use(express.static("public"));
 
 // Stel Liquid in als 'view engine'
 const engine = new Liquid();
+
+// Register a Liquid filter that formats ISO datetimes into relative times
+engine.registerFilter('relative_time', function (iso) {
+  if (!iso) return '';
+  var date = new Date(iso);
+  if (isNaN(date)) return iso;
+  var now = new Date();
+  var diffMs = now - date;
+  var diffMin = Math.floor(diffMs / 60000);
+  if (diffMin < 1) return 'just now';
+  if (diffMin < 60) return diffMin + 'min ago';
+  var diffH = Math.floor(diffMin / 60);
+  if (diffH < 24) return diffH + 'h ago';
+  var diffD = Math.floor(diffH / 24);
+  if (diffD < 7) return diffD + 'd ago';
+  var diffW = Math.floor(diffD / 7);
+  if (diffW < 4) return diffW + 'w ago';
+  var diffM = Math.floor(diffD / 30);
+  if (diffM < 12) return diffM + 'm ago';
+  var diffY = Math.floor(diffD / 365);
+  return diffY + 'y ago';
+});
+
 app.engine("liquid", engine.express());
 
 // Stel de map met Liquid templates in

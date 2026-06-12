@@ -67,42 +67,6 @@
 
 <button class="basket-submit-button" type="button">Add to basket</button>
 
-<section class="reviews">
-  <h1 id="reviews">Reviews</h1>
-
-  <span class="final-rating">5.0</span>
-  <span>out of 5</span><br><br>
-
-  {% comment %} <a href="#reviews">Read 5 reviews</a> {% endcomment %}
-
-  <div class="customer-reviews">
-    {% for review in reviews %}
-      <article class="review-item">
-        <div class="review-stars">
-          {% for i in (1..review.ratingValue) %}
-            <svg width="14" height="14" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
-            </svg>
-          {% endfor %}
-        </div>
-          <h1 class="review-title">{{ review.title }}</h1>
-          <p>{{ review.description }}</p>
-
-          {% for attribute in review.attributes %}
-            <ul class="review-attributes">
-              <li>
-                <span class="score">{{ attribute.score }}/5
-                  <svg width="14" height="14" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="black"/>
-                  </svg>
-                </span>
-                <span class="criteria">{{ attribute.criteria }}</span>
-              </li>
-            </ul>
-          {% endfor %}
-      </article>
-    {% endfor %}
-  </div>
-</section>
+{% render 'partials/reviews.liquid', reviews: reviews %}
 
 {% render 'partials/footer.liquid' %}
