@@ -4,6 +4,12 @@
   <span class="final-rating">5.0</span>
   <span>out of 5</span><br><br>
 
+  <form class="add-review-section" method="POST" action="/reviews">
+    <button class="add-review-button">Add your review</button>
+    <input type="text" id="title-input" name="title" placeholder="Title..." class="review-input">
+    <textarea id="description-input" name="description" placeholder="Description..." class="review-input-description"></textarea>
+  </form>
+
   {% comment %} <a href="#reviews">Read 5 reviews</a> {% endcomment %}
 
   <div class="customer-reviews">

@@ -265,6 +265,49 @@ label {
     margin-right: 3px;
 }
 
+form.add-review-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--color-quiet-secondary);
+}
+
+.add-review-button {
+    background-color: var(--color-accent);
+    border: none;
+    color: white;
+    padding: 1rem;
+    width: 200px;
+    font-size: 14px;
+    font-family: "Decathlon";
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color .3s;
+
+    &:hover {
+        background-color: var(--color-accent-hover);
+    }
+}
+
+.review-input {
+    border: none;
+    background-color: var(--color-quiet-secondary);
+    border-radius: 12px;
+    padding: 12px;
+    width: 200px;
+}
+
+.review-input-description {
+    border: none;
+    background-color: var(--color-quiet-secondary);
+    border-radius: 12px;
+    padding: 12px;
+    width: 250px;
+    height: 100px;
+}
+
 .review-item {
     border-bottom: 2px solid var(--color-quiet-secondary);
     padding-top: 32px;
