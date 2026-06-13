@@ -271,6 +271,11 @@ form.add-review-section {
     gap: 16px;
     padding-bottom: 32px;
     border-bottom: 2px solid var(--color-quiet-secondary);
+
+    h3 {
+        padding: 0;
+        margin: 0;
+    }
 }
 
 .add-review-button {
@@ -306,6 +311,86 @@ form.add-review-section {
     padding: 12px;
     width: 250px;
     height: 100px;
+}
+
+.criteria-rating-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.criteria-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.criteria-label {
+    min-width: 130px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.star-rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 0.2rem;
+    width: fit-content;
+}
+
+.star-rating input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.star-rating input[type="radio"]:focus-visible + label {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.star-rating label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(220, 220, 220);
+}
+
+.star-rating label svg path {
+    fill: currentColor;
+    transition: fill 0.2s ease;
+}
+
+.star-rating input[type="radio"]:checked + label,
+.star-rating input[type="radio"]:checked + label ~ label {
+    color: var(--color-accent);
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: var(--color-accent-hover);
+}
+
+.submit-review-button {
+    background-color: var(--color-accent);
+    border: none;
+    color: white;
+    padding: 1rem;
+    width: 120px;
+    font-size: 14px;
+    font-family: "Decathlon";
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color .3s;
+
+    &:hover {
+        background-color: var(--color-accent-hover);
+    }
 }
 
 .review-item {

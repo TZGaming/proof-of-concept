@@ -77,6 +77,13 @@ app.get("/", async function (request, response) {
   });
 });
 
+app.post("/reviews", function (request, response) {
+  const { title, description, rating } = request.body;
+  console.log("Nieuwe review ontvangen:", { title, description, rating });
+  // TODO: hier kun je de review naar een database of API sturen
+  response.redirect("/");
+});
+
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
 app.set("port", process.env.PORT || 8000);
