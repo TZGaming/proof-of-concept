@@ -6,15 +6,15 @@
 
   <form class="add-review-section" method="POST" action="/reviews">
     <button class="add-review-button">Add your review</button>
-    <input type="text" id="title-input" name="title" placeholder="Title..." class="review-input">
-    <textarea id="description-input" name="description" placeholder="Description..." class="review-input-description"></textarea>
+    <input type="text" id="title-input" name="title" placeholder="Title..." class="review-input" required>
+    <textarea id="description-input" name="description" placeholder="Description..." class="review-input-description" required></textarea>
 
     <div class="criteria-rating-list">
       <div class="criteria-rating-row">
         <span class="criteria-label">Grip</span>
         <div class="star-rating" role="radiogroup" aria-label="Grip rating">
           {% for i in (1..5) reversed %}
-            <input type="radio" id="grip-rating-{{ i }}" name="grip" value="{{ i }}">
+            <input type="radio" id="grip-rating-{{ i }}" name="grip" value="{{ i }}" required>
             <label for="grip-rating-{{ i }}" class="star" aria-label="{{ i }} star{% if i != 1 %}s{% endif %}">
               <svg width="18" height="18" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="currentColor"/>
@@ -27,7 +27,7 @@
         <span class="criteria-label">Foot support</span>
         <div class="star-rating" role="radiogroup" aria-label="Foot support rating">
           {% for i in (1..5) reversed %}
-            <input type="radio" id="foot-support-rating-{{ i }}" name="foot_support" value="{{ i }}">
+            <input type="radio" id="foot-support-rating-{{ i }}" name="foot_support" value="{{ i }}" required>
             <label for="foot-support-rating-{{ i }}" class="star" aria-label="{{ i }} star{% if i != 1 %}s{% endif %}">
               <svg width="18" height="18" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="currentColor"/>
@@ -40,7 +40,7 @@
         <span class="criteria-label">Lightweight</span>
         <div class="star-rating" role="radiogroup" aria-label="Lightweight rating">
           {% for i in (1..5) reversed %}
-            <input type="radio" id="lightweight-rating-{{ i }}" name="lightweight" value="{{ i }}">
+            <input type="radio" id="lightweight-rating-{{ i }}" name="lightweight" value="{{ i }}" required>
             <label for="lightweight-rating-{{ i }}" class="star" aria-label="{{ i }} star{% if i != 1 %}s{% endif %}">
               <svg width="18" height="18" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="currentColor"/>
@@ -53,7 +53,7 @@
         <span class="criteria-label">Value for money</span>
         <div class="star-rating" role="radiogroup" aria-label="Value for money rating">
           {% for i in (1..5) reversed %}
-            <input type="radio" id="value-for-money-rating-{{ i }}" name="value_for_money" value="{{ i }}">
+            <input type="radio" id="value-for-money-rating-{{ i }}" name="value_for_money" value="{{ i }}" required>
             <label for="value-for-money-rating-{{ i }}" class="star" aria-label="{{ i }} star{% if i != 1 %}s{% endif %}">
               <svg width="18" height="18" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="currentColor"/>
@@ -66,7 +66,7 @@
         <span class="criteria-label">Look / design</span>
         <div class="star-rating" role="radiogroup" aria-label="Look and design rating">
           {% for i in (1..5) reversed %}
-            <input type="radio" id="look-design-rating-{{ i }}" name="look_design" value="{{ i }}">
+            <input type="radio" id="look-design-rating-{{ i }}" name="look_design" value="{{ i }}" required>
             <label for="look-design-rating-{{ i }}" class="star" aria-label="{{ i }} star{% if i != 1 %}s{% endif %}">
               <svg width="18" height="18" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="currentColor"/>
@@ -80,7 +80,7 @@
     <h3>Overall rating:</h3>
     <div class="star-rating" role="radiogroup" aria-label="Review rating">
       {% for i in (1..5) reversed %}
-        <input type="radio" id="rating-{{ i }}" name="rating" value="{{ i }}">
+        <input type="radio" id="rating-{{ i }}" name="rating" value="{{ i }}" required>
         <label for="rating-{{ i }}" class="star" aria-label="{{ i }} star{% if i != 1 %}s{% endif %}">
           <svg width="18" height="18" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.8042 0L4.70226 2.76393H7.60843L5.25728 4.47214L6.15534 7.23607L3.8042 5.52786L1.45306 7.23607L2.35111 4.47214L-2.69413e-05 2.76393H2.90614L3.8042 0Z" fill="currentColor"/>
@@ -95,6 +95,7 @@
   {% comment %} <a href="#reviews">Read 5 reviews</a> {% endcomment %}
 
   <div class="customer-reviews">
+    {% assign reviews = reviews | reverse %}
     {% for review in reviews %}
       <article class="review-item">
         <div class="review-stars">

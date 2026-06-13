@@ -430,6 +430,25 @@ form.add-review-section {
         font-weight: bold;
     }
 
+    .delete-review-form {
+      margin-top: 12px;
+    }
+
+    .delete-review-button {
+      background: transparent;
+      border: 1px solid var(--color-quiet);
+      color: var(--text-color);
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .delete-review-button:hover {
+      background-color: var(--color-quiet-secondary);
+      border-color: var(--color-accent);
+    }
+
     .review-information {
         font-size: 12px;
         color: var(--color-quiet);

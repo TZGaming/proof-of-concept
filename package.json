@@ -8,7 +8,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "delete-reviews": "node scripts/delete-my-reviews.js"
   },
   "repository": {
     "type": "git",
