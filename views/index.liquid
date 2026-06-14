@@ -1,11 +1,27 @@
 {% render 'partials/head.liquid' %}
 
 <section class="product-info">
-  <div class="photo-grid">
-    {% assign reversedImages = product.images | reverse %}
-    {% for image in reversedImages %}
-      <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=500&height=500" alt="" width="300" height="300" class="photo-preview">
-    {% endfor %}
+  {% assign reversedImages = product.images | reverse %}
+  {% assign mainImage = reversedImages.first %}
+
+  <div class="photo-carousel">
+    <div class="photo-main">
+      <div class="photo-main-track" aria-label="Product image carousel">
+        {% for image in reversedImages %}
+          <div class="photo-main-slide{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}" role="button" tabindex="0" aria-label="Bekijk foto {{ forloop.index }}">
+            <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" alt="{{ product.title }} foto {{ forloop.index }}">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="photo-selector" aria-label="Product image selector">
+      {% for image in reversedImages %}
+        <div class="thumbnail-button{% if forloop.first %} selected{% endif %}" data-src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" role="button" tabindex="0" aria-label="Kies foto {{ forloop.index }}"{% if forloop.first %} aria-current="true"{% endif %}>
+          <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" alt="{{ product.title }} foto {{ forloop.index }}">
+        </div>
+      {% endfor %}
+    </div>
   </div>
 
   <h1 class="brand">{{ product.brand }}</h1>
@@ -66,6 +82,88 @@
 <p class="price">€{{ product.price }}</p>
 
 <button class="basket-submit-button" type="button">Add to basket</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var mainTrack = document.querySelector('.photo-main-track');
+    var slideButtons = Array.from(document.querySelectorAll('.photo-main-slide'));
+    var thumbnails = Array.from(document.querySelectorAll('.photo-selector .thumbnail-button'));
+    var currentIndex = 0;
+    var isScrolling;
+
+    function updateActive(index) {
+      thumbnails.forEach(function (btn, btnIndex) {
+        btn.classList.toggle('selected', btnIndex === index);
+        if (btnIndex === index) {
+          btn.setAttribute('aria-current', 'true');
+          btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } else {
+          btn.removeAttribute('aria-current');
+        }
+      });
+
+      slideButtons.forEach(function (slide, slideIndex) {
+        slide.classList.toggle('active', slideIndex === index);
+      });
+
+      currentIndex = index;
+    }
+
+    function selectImage(index, scrollTrack) {
+      if (index < 0) {
+        index = slideButtons.length - 1;
+      } else if (index >= slideButtons.length) {
+        index = 0;
+      }
+
+      if (currentIndex === index) {
+        return;
+      }
+
+      updateActive(index);
+      if (scrollTrack !== false) {
+        slideButtons[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      }
+    }
+
+    function findClosestSlide() {
+      var trackRect = mainTrack.getBoundingClientRect();
+      var closestIndex = 0;
+      var closestDistance = Infinity;
+
+      slideButtons.forEach(function (slide, index) {
+        var rect = slide.getBoundingClientRect();
+        var distance = Math.abs(rect.left - trackRect.left);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      return closestIndex;
+    }
+
+    thumbnails.forEach(function (button, index) {
+      button.addEventListener('click', function () {
+        selectImage(index);
+      });
+      button.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectImage(index);
+        }
+      });
+    });
+
+    mainTrack.addEventListener('scroll', function () {
+      window.clearTimeout(isScrolling);
+      isScrolling = window.setTimeout(function () {
+        var nearest = findClosestSlide();
+        selectImage(nearest, false);
+      }, 80);
+    }, { passive: true });
+  });
+</script>
 
 {% render 'partials/reviews.liquid', reviews: reviews %}
 
