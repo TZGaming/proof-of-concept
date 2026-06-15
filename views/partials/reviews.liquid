@@ -4,8 +4,9 @@
   <span class="final-rating">5.0</span>
   <span>out of 5</span><br><br>
 
+  <button class="add-review-button" type="button">Add your review</button>
+
   <form class="add-review-section" method="POST" action="/reviews">
-    <button class="add-review-button" type="button">Add your review</button>
     <input type="text" id="title-input" name="title" placeholder="Title..." class="review-input" required>
     <textarea id="description-input" name="description" placeholder="Description..." class="review-input-description" required></textarea>
 
@@ -128,3 +129,14 @@
     {% endfor %}
   </div>
 </section>
+
+<script>
+  let reviewButton = document.querySelector('.add-review-button');
+  let reviewSection = document.querySelector('.add-review-section');
+
+  reviewSection.classList.add('hidden');
+
+  reviewButton.addEventListener('click', () => {
+    reviewSection.classList.toggle('hidden');
+  });
+</script>

@@ -397,11 +397,16 @@ form.add-review-section {
     }
 }
 
+.hidden {
+    display: none !important;
+}
+
 .add-review-button {
     background-color: var(--color-accent);
     border: none;
     color: white;
     padding: 1rem;
+    margin-bottom: 16px;
     width: 200px;
     font-size: 14px;
     font-family: "Decathlon";
