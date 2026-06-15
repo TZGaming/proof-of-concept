@@ -9,7 +9,7 @@
       <div class="photo-main-track" aria-label="Product image carousel">
         {% for image in reversedImages %}
           <div class="photo-main-slide{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}" role="button" tabindex="0" aria-label="Bekijk foto {{ forloop.index }}">
-            <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" alt="{{ product.title }} foto {{ forloop.index }}">
+            <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" width="300" height="300" alt="{{ product.title }} foto {{ forloop.index }}">
           </div>
         {% endfor %}
       </div>
@@ -18,7 +18,7 @@
     <div class="photo-selector" aria-label="Product image selector">
       {% for image in reversedImages %}
         <div class="thumbnail-button{% if forloop.first %} selected{% endif %}" data-src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" role="button" tabindex="0" aria-label="Kies foto {{ forloop.index }}"{% if forloop.first %} aria-current="true"{% endif %}>
-          <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" alt="{{ product.title }} foto {{ forloop.index }}">
+          <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" width="100" height="100" alt="{{ product.title }} foto {{ forloop.index }}">
         </div>
       {% endfor %}
     </div>

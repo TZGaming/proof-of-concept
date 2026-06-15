@@ -92,8 +92,6 @@
     <button class="submit-review-button" type="submit">Submit</button>
   </form>
 
-  {% comment %} <a href="#reviews">Read 5 reviews</a> {% endcomment %}
-
   <div class="customer-reviews">
     {% assign reviews = reviews | reverse %}
     {% for review in reviews %}

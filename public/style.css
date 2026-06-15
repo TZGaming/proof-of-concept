@@ -70,7 +70,6 @@ main {
 .search-bar {
     display: flex;
     align-items: center;
-    gap: 8px;
     padding: 0px 8px 0px 24px;
     border-radius: 2rem;
     background: var(--color-quiet-secondary );
@@ -78,6 +77,13 @@ main {
     margin-bottom: 16px;
     outline: 2px solid transparent;
     transition: outline 0.1s ease-in-out;
+
+    form {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 8px;
+    }
 
     &:focus-within {
         outline: 2px solid var(--color-accent);
