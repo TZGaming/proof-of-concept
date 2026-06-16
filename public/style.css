@@ -107,6 +107,18 @@ main {
     }
 }
 
+.main-product-information {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 10vw;
+        padding: 0vw 10vw 0vw 10vw;
+        justify-content: center;
+    }
+}
+
 .photo-carousel {
     display: flex;
     flex-direction: column;
@@ -570,18 +582,6 @@ form.add-review-section {
 [id^="review-"]:target {
     animation: highlight 1s ease;
     border-radius: 12px;
-}
-
-.main-product-information {
-    display: flex;
-    flex-direction: column;
-
-    @media (min-width: 768px) {
-        flex-direction: row;
-        gap: 10vw;
-        padding: 0vw 10vw 0vw 10vw;
-        justify-content: center;
-    }
 }
 
 @keyframes highlight {
