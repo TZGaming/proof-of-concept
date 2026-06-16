@@ -118,13 +118,30 @@ app.post("/reviews", async function (request, response) {
     ],
   };
 
-  await fetch(reviewCreateEndpoint, {
+  // Stuur de nieuwe review naar de API en haal het aangemaakte review-ID op.
+  const createResponse = await fetch(reviewCreateEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
 
-  response.redirect("/#reviews");
+  // Probeer de response JSON te lezen en bepaal het ID van de aangemaakte review.
+  let createdId = null;
+  try {
+    const createJson = await createResponse.json();
+    // Directus zet vaak het item onder `data.id`, maar andere API's kunnen `id` direct teruggeven.
+    createdId = createJson?.data?.id ?? createJson?.id ?? null;
+  } catch (e) {
+    // Fout bij parsen; fallback naar geen ID.
+    createdId = null;
+  }
+
+  // Redirect naar de specifieke review anchor als we een ID hebben, anders naar de reviews-sectie.
+  if (createdId) {
+    response.redirect(`/#review-${createdId}`);
+  } else {
+    response.redirect("/#reviews");
+  }
 });
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
