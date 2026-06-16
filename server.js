@@ -16,20 +16,27 @@ app.use(express.static("public"));
 // Stel Liquid in als 'view engine'
 const engine = new Liquid();
 
-// Register a Liquid filter that formats ISO datetimes into relative times
 engine.registerFilter('relative_time', function (iso) {
+  // Geen datum? Dan niets laten zien.
   if (!iso) return '';
-  // Directus may return datetimes without a timezone offset.
-  // Treat bare ISO datetimes as UTC so 'just now' works correctly for recent posts.
+
+  // Directus kan tijden geven zonder tijdzone-achtervoegsel.
+  // Voeg in dat geval 'Z' toe zodat we het als UTC kunnen rekenen.
   var normIso = iso;
   if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(iso)) {
     normIso = iso + 'Z';
   }
+
+  // Maak van de string een echte Date.
   var date = new Date(normIso);
   if (isNaN(date)) return iso;
+
+  // Bereken hoeveel tijd er sinds de datum is verlopen.
   var now = new Date();
   var diffMs = now - date;
   var diffMin = Math.floor(diffMs / 60000);
+
+  // Afhankelijk van hoe lang geleden het is, geef een korte tekst terug.
   if (diffMin < 1) return 'just now';
   if (diffMin < 60) return diffMin + 'min ago';
   var diffH = Math.floor(diffMin / 60);
@@ -56,7 +63,6 @@ const reviewEndpoint = `${baseURL}/decathlon_reviews?fields=*,attributes.*`
 const reviewCreateEndpoint = `${baseURL}/decathlon_reviews`
 
 const reviewUser = {
-  id: '55',
   name: 'Tom',
 };
 
@@ -66,46 +72,32 @@ const fetchData = async (url) => {
   return json.data;
 };
 
+// Haal een nette rating score uit een review en zorg dat het altijd een getal tussen 0 en 5 wordt.
 const getRatingValue = (review) => {
   const rawRating = review?.rating ?? review?.review_rating ?? 0;
   const numberRating = typeof rawRating === "number" ? rawRating : Number(rawRating);
   return Number.isNaN(numberRating) ? 0 : Math.min(5, Math.max(0, Math.round(numberRating)));
 };
 
+// De product pagina route: product- en reviewdata ophalen en doorgeven aan de template.
 app.get("/", async function (request, response) {
   const [products, reviews] = await Promise.all([
     fetchData(productEndpoint),
     fetchData(reviewEndpoint),
   ]);
 
+  // Voeg voor elke review een nette rating toe.
   const reviewsWithRatings = reviews.map((review) => ({
     ...review,
     ratingValue: getRatingValue(review),
-    user_id: review.user_id != null ? String(review.user_id) : "",
   }));
 
+  // Render de index template met de eerste productdata en de reviews.
   response.render("index.liquid", {
     product: products[0],
     reviews: reviewsWithRatings,
-    currentUserId: String(reviewUser.id),
     currentUserName: reviewUser.name,
   });
-});
-
-app.post("/reviews/delete", async function (request, response) {
-  const { id } = request.body;
-
-  const reviewResponse = await fetch(`${reviewCreateEndpoint}/${id}`);
-  const reviewJson = await reviewResponse.json();
-  const review = reviewJson.data || {};
-
-  if (String(review.user_id) === reviewUser.id || review.name === reviewUser.name) {
-    await fetch(`${reviewCreateEndpoint}/${id}`, {
-      method: "DELETE",
-    });
-  }
-
-  response.redirect("/");
 });
 
 app.post("/reviews", async function (request, response) {
@@ -116,7 +108,6 @@ app.post("/reviews", async function (request, response) {
     description,
     rating: Number(rating) || 0,
     name: reviewUser.name,
-    user_id: reviewUser.id,
     created_at: new Date().toISOString(),
     attributes: [
       { criteria: "grip", score: Number(grip) || 0 },

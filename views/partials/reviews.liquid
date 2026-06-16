@@ -96,7 +96,7 @@
   <div class="customer-reviews">
     {% assign reviews = reviews | reverse %}
     {% for review in reviews %}
-      <article class="review-item">
+      <article id="review-{{ review.id }}" class="review-item">
         <div class="review-stars">
           {% for i in (1..review.ratingValue) %}
             <svg width="14" height="14" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
