@@ -1,35 +1,40 @@
-Ontwerp en maak een data driven online concept voor een opdrachtgever
+# Decathlon
+A mobile first product page that allows you to see product information and reviews.
 
-De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://github.com/fdnd-task/proof-of-concept/blob/main/docs/INSTRUCTIONS.md)
+## Table of contents
 
-# Titel
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
+  * [Description](#description)
+  * [Usage](#usage)
+  * [Features](#features)
+  * [Installation](#installation)
 
-## Inhoudsopgave
+## Description
+For Decathlon, I was tasked with redesigning the photo carousel. The photos on their website are too large, and they’d like to draw inspiration from new designs. I was also given a bonus assignment to post a review on the product page.
 
-  * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
-  * [Kenmerken](#kenmerken)
-  * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
-  * [Licentie](#licentie)
+[Live website](https://decathlon-tom.onrender.com/)
 
-## Beschrijving
-<!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+<img width="344" height="1225" alt="localhost_8000_ (3)" src="https://github.com/user-attachments/assets/93175858-c17d-4d33-aed0-ad86c17ab2ec" />
 
-## Gebruik
-<!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
+## Usage
+One way to interact is to post a review. There's a large button labeled “Add your review”; and when you click it, a form will appear. You can fill out the form and click “Submit” when you're done.
 
-## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
+<img width="370" height="520" alt="reviewpostdecathlon-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/c4f446cd-8ae0-461c-8914-665688455ef6" />
 
-## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+## Features
+For the review form, I chose to use their accent color throughout, because it was the best fit. I also gave each element the same spacing so that it’s the same size everywhere, giving the design a very clean look. I also worked with different layers; the website is still mostly functional even when CSS and JavaScript are disabled. 
 
-## Bronnen
+**[adding photos here later]**
 
-## Licentie
+The photo selector works via JavaScript, but you can also scroll through the photo previews themselves. So if JavaScript isn’t working, the photo selector is hidden, since it wouldn’t work anyway. Instead, you can still scroll through the photos in the preview thanks to the `overflow` property in the CSS. And if the CSS isn’t working, the photos will simply appear neatly one below the other, and they won’t be too large thanks to the fixed width and height specified in the HTML.
 
-This project is licensed under the terms of the [MIT license](./LICENSE).
+There is also a click event on the “Add your review” button that causes the form to appear. By default, JavaScript adds a “hidden” class to the form, so if JavaScript isn't working, the form will still be visible. Otherwise, the click event on the button won't work and the form will never expand, meaning nothing will be visible.
+
+## Installation
+- Clone the repository
+- Open the folder in VS Code
+- Open the terminal and type in these commands:
+
+`npm install`
+<br>
+`npm start`
+- Go to `localhost:8000` to see it live
