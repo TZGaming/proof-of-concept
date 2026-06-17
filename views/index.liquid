@@ -12,7 +12,9 @@
               <div class="photo-main-track">
                 {% for image in reversedImages %}
                   <div class="photo-main-slide{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}" role="button" tabindex="0">
-                    <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" width="300" height="300" alt="{{ product.title }} foto {{ forloop.index }}">
+                    <a href="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900">
+                      <img src="https://fdnd-agency.directus.app/assets/{{ image.directus_files_id }}?width=900&height=900" width="300" height="300" alt="{{ product.title }} foto {{ forloop.index }}">
+                    </a>
                   </div>
                 {% endfor %}
               </div>
