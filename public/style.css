@@ -20,10 +20,37 @@ body {
     margin: 8px 0 0 0;
 }
 
+.mobile-nav {
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+
+.desktop-nav {
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (min-width: 768px) {
+        margin-left: 8px;
+        padding-right: 5vw;
+        padding-left: 5vw;
+        margin-bottom: 32px;
+
+        .search-bar {
+            flex: 1;
+            min-width: 0;
+            margin-bottom: 0;
+            outline: 2px solid transparent;
+            transition: outline 0.1s ease-in-out;
+        }
+    }
 
     ul {
         list-style: none;
@@ -32,6 +59,11 @@ nav {
         align-items: center;
         width: 100%;
         padding: 0;
+
+        @media (min-width: 768px) {
+            justify-content: space-between;
+            gap: 5vw;
+        }
 
         li {
             &.nav-hover-element {
@@ -62,6 +94,26 @@ nav {
     }
 }
 
+.navbar-group1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar-group2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+}
+
+.navbar-group3 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 4px;
+}
+
 main {
     margin-left: 16px;
     margin-right: 16px;
@@ -77,17 +129,32 @@ main {
     align-items: center;
     padding: 0px 8px 0px 24px;
     border-radius: 2rem;
-    background: var(--color-quiet-secondary );
+    background: var(--color-quiet-secondary);
     height: 3rem;
     margin-bottom: 16px;
-    outline: 2px solid transparent;
-    transition: outline 0.1s ease-in-out;
+
+    @media (min-width: 768px) {
+        margin-bottom: 0px;
+    }
+
+    &.mobile {
+        @media (min-width: 768px) {
+            display: none;
+        }
+    }
+
+    &.desktop {
+        @media (min-width: 768px) {
+            display: flex;
+        }
+    }
 
     form {
         display: flex;
         align-items: center;
         flex-direction: row;
         gap: 8px;
+        width: 100%;
     }
 
     &:focus-within {
