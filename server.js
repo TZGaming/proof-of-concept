@@ -101,13 +101,15 @@ app.get("/", async function (request, response) {
 });
 
 app.post("/reviews", async function (request, response) {
-  const { title, description, rating, grip, foot_support, lightweight, value_for_money, look_design } = request.body;
+  const { title, description, rating, grip, foot_support, lightweight, value_for_money, look_design, productId } = request.body;
 
   const payload = {
     title,
     description,
     rating: Number(rating) || 0,
     name: reviewUser.name,
+    location: "NL",
+    product: productId,
     created_at: new Date().toISOString(),
     attributes: [
       { criteria: "grip", score: Number(grip) || 0 },

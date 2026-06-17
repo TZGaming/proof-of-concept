@@ -613,15 +613,49 @@ form.add-review-section {
     color: white;
     padding: 1rem;
     width: 120px;
+    min-height: 50px;
     font-size: 14px;
     font-family: "Decathlon";
     font-weight: bold;
     border-radius: 2rem;
     cursor: pointer;
     transition: background-color .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
         background-color: var(--color-accent-hover);
+    }
+
+    .button-text {
+        display: inline-block;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .button-loader {
+        display: none;
+        animation: spin 1s linear infinite;
+    }
+
+    &.loading {
+        .button-text {
+            opacity: 0;
+            display: none;
+        }
+
+        .button-loader {
+            display: inline-block;
+        }
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
 
