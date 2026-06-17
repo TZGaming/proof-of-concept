@@ -463,6 +463,24 @@ label {
     }
 }
 
+.reviews {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+        padding-top: 32px;
+        padding-right: 10vw;
+        padding-left: 10vw;
+        gap: 32px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.customer-reviews {
+    max-width: 550px;
+}
+
 .final-rating {
     font-size: 36px;
     font-weight: bold;
@@ -475,6 +493,10 @@ form.add-review-section {
     gap: 16px;
     padding-bottom: 32px;
     border-bottom: 2px solid var(--color-quiet-secondary);
+
+    @media (min-width: 768px) {
+        border-bottom: 0px solid var(--color-quiet-secondary);
+    }
 
     h3 {
         padding: 0;
@@ -492,6 +514,7 @@ form.add-review-section {
     color: white;
     padding: 1rem;
     margin-bottom: 16px;
+    margin-top: 16px;
     width: 200px;
     font-size: 14px;
     font-family: "Decathlon";
