@@ -23,7 +23,43 @@ One way to interact is to post a review. There's a large button labeled “Add y
 ## Features
 For the review form, I chose to use their accent color throughout, because it was the best fit. I also gave each element the same spacing so that it’s the same size everywhere, giving the design a very clean look. I also worked with different layers; the website is still mostly functional even when CSS and JavaScript are disabled. 
 
-**[adding photos here later]**
+### Carrousel
+<table>
+  <tr>
+    <td>
+     <h2>Functional + Reliable</h2>
+     <img width="228" src="https://github.com/user-attachments/assets/19c6376f-c0b7-40ab-abb3-28f521102f2c" />
+    </td>
+    <td>
+     <h2>Usable</h2>
+     <img width="228" src="https://github.com/user-attachments/assets/89bc8065-1331-423a-b2e2-7a87345c4cc5" />
+    </td>
+    <td>
+     <h2>Pleasurable</h2>
+     <img width="228" src="https://github.com/user-attachments/assets/cad5e015-b85c-4e3c-91ed-4b9b3032b27a" />
+    </td>
+  </tr>
+</table>
+
+### Review form
+<table>
+  <tr>
+    <td>
+     <h2>Functional + Reliable</h2>
+     <img width="228" src="https://github.com/user-attachments/assets/5e0b7cd8-030b-4385-a967-b8de8008d199" />
+    </td>
+    <td>
+     <h2>Usable</h2>
+     <p>Form is not hidden by default</p>
+     <img width="228" src="https://github.com/user-attachments/assets/ff2bf580-9a88-482c-8411-bf869cc10c7c" />
+    </td>
+    <td>
+     <h2>Pleasurable</h2>
+     <p>Form is hidden by default and can be opened by clicking on the button</p>
+     <img width="228" src="https://github.com/user-attachments/assets/6a0669b6-459c-4c61-b326-878c03fe1239" />
+    </td>
+  </tr>
+</table>
 
 The photo selector works via JavaScript, but you can also scroll through the photo previews themselves. So if JavaScript isn’t working, the photo selector is hidden, since it wouldn’t work anyway. Instead, you can still scroll through the photos in the preview thanks to the `overflow` property in the CSS. And if the CSS isn’t working, the photos will simply appear neatly one below the other, and they won’t be too large thanks to the fixed width and height specified in the HTML.
 
